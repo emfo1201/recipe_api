@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,11 +42,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(@NonNull RecipeViewHolder recipeViewHolder, int i) {
         RecipeItem currentItem = recipeList.get(i);
         String image = currentItem.getImageUrl();
-        String creatorName = currentItem.getCreator();
-        int likeCount = currentItem.getLikes();
+        String creatorName = currentItem.getTitle();
+        String time = context.getResources().getString(R.string.cooking_time);
+        String minutes = context.getResources().getString(R.string.cooking_minutes);
+        int likeCount = currentItem.getTime();
+        String setTimeText = time + " " + likeCount + " " + minutes;
 
         recipeViewHolder.textViewCreator.setText(creatorName);
-        recipeViewHolder.textViewLikes.setText("Cooking time: " + likeCount + "minutes");
+        recipeViewHolder.textViewLikes.setText(setTimeText);
         Picasso.with(context).load(image).fit().centerInside().into(recipeViewHolder.imageView);
     }
 
@@ -65,7 +67,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             super(itemView);
             imageView = itemView.findViewById(R.id.image_recipe);
             textViewCreator = itemView.findViewById(R.id.textView_name);
-            textViewLikes = itemView.findViewById(R.id.textView_likes);
+            textViewLikes = itemView.findViewById(R.id.textView_time);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

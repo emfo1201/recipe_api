@@ -2,30 +2,31 @@ package android.recipeapi;
 
 public class RecipeItem {
     private String imageUrl;
-    private String creator;
+    private String title;
     private String source;
-    private int likes;
+    private int time;
 
-    public RecipeItem(String imageUrl, String creator, String source, int likes) {
+    public RecipeItem(String imageUrl, String title, String source, int time) {
         this.imageUrl = imageUrl;
-        this.creator = creator;
+        this.title = title;
         this.source = source;
-        this.likes = likes;
+        this.time = time;
     }
 
+    // Get functions to get info about the different recipes
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public String getCreator() {
-        return creator;
+    public String getTitle() {
+        return title;
     }
 
     public String getSource() {
         return source;
     }
 
-    public int getLikes() {
-        return likes;
+    public int getTime() {
+        return time;
     }
 }

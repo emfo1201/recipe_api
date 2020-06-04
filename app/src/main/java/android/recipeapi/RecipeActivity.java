@@ -14,6 +14,7 @@ import static android.recipeapi.MainActivity.EXTRA_LIKES;
 import static android.recipeapi.MainActivity.EXTRA_SOURCE;
 import static android.recipeapi.MainActivity.EXTRA_URL;
 
+// Class to show info about a specific recipe
 public class RecipeActivity extends AppCompatActivity {
 
     @Override
@@ -26,16 +27,19 @@ public class RecipeActivity extends AppCompatActivity {
         String creatorName = intent.getStringExtra(EXTRA_CREATOR);
         String source = intent.getStringExtra(EXTRA_SOURCE);
         int likeCount = intent.getIntExtra(EXTRA_LIKES, 0);
+        String time = getResources().getString(R.string.cooking_time);
+        String minutes = getResources().getString(R.string.cooking_minutes);
+        String setTimeText = time + " " + likeCount + " " + minutes;
 
         ImageView imageView = findViewById(R.id.recipe_image);
-        TextView textViewCreator = findViewById(R.id.recipe_creator);
-        TextView textViewLikes = findViewById(R.id.recipe_likes);
+        TextView textViewCreator = findViewById(R.id.recipe_title);
+        TextView textViewLikes = findViewById(R.id.recipe_minutes);
         TextView textViewSource = findViewById(R.id.recipe_source);
 
         Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
         textViewCreator.setText(creatorName);
         textViewSource.setText(source);
         Linkify.addLinks(textViewSource , Linkify.WEB_URLS);
-        textViewLikes.setText("Cooking time: " + likeCount + " minutes");
+        textViewLikes.setText(setTimeText);
     }
 }

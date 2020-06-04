@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.OnI
 
     private void parseJSON() {
         final String image = "https://spoonacular.com/recipeImages/";
-        String imageUrl = "https://api.spoonacular.com/recipes/search?query=cheese&apiKey=c08a691bb94449d4a88c55b11b5862c0";
+        String imageUrl = "https://api.spoonacular.com/recipes/search?query=cheese&apiKey=";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, imageUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.OnI
         RecipeItem clickedItem = recipeList.get(position);
 
         intent.putExtra(EXTRA_URL, clickedItem.getImageUrl());
-        intent.putExtra(EXTRA_CREATOR, clickedItem.getCreator());
-        intent.putExtra(EXTRA_LIKES, clickedItem.getLikes());
+        intent.putExtra(EXTRA_CREATOR, clickedItem.getTitle());
+        intent.putExtra(EXTRA_LIKES, clickedItem.getTime());
         intent.putExtra(EXTRA_SOURCE, clickedItem.getSource());
 
         startActivity(intent);
