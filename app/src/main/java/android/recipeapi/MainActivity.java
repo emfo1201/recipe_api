@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.OnI
     private void parseJSON() {
         final String image = "https://spoonacular.com/recipeImages/";
         String imageUrl = "https://api.spoonacular.com/recipes/search?query=cheese&apiKey=";
+        
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, imageUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
